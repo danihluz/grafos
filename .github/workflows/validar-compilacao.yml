@@ -52,7 +52,7 @@ jobs:
             
             echo "   Compilando..."
               
-            if gcc -Wall -Wextra -Werror -std=c11 "$PASTA/*.c" -o "$PASTA/main" -lm 2>&1; then
+            if gcc -Wall -Wextra -Werror -std=c11 "$PASTA"*.c -o "$PASTA/main" -lm 2>&1; then
               echo "   ✅ SUCESSO"
               SUCESSOS=$((SUCESSOS + 1))
             else
@@ -78,3 +78,7 @@ jobs:
           fi
           
           echo "✅ Todos os arquivos compilaram com sucesso!"
+
+      - name: Testar AGM (pratica 08)
+        if: ${{ hashFiles('praticas/pratica08/tests/test_agm.c') != '' }}
+        run: make -C praticas/pratica08 test
