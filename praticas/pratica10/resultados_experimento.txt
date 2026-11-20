@@ -1,0 +1,39 @@
+Ambiente: Ubuntu/WSL (Linux)
+Compilador: gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0
+Comando: make all && ./main
+CFLAGS: -Wall -Wextra -Werror -std=c11 -O2
+
+=== CAMINHO SEM CICLO HAMILTONIANO ===
+Caminho Hamiltoniano: 0 -> 1 -> 2 -> 3 -> 4
+Ciclo Hamiltoniano: inexistente
+TSP da reducao: 0 -> 1 -> 2 -> 3 -> 4 -> 0
+Custo otimo da reducao: 6 | n = 5 | custo igual a n: nao
+
+=== GRAFO COM CICLO HAMILTONIANO ===
+Caminho Hamiltoniano: 0 -> 1 -> 2 -> 3 -> 4
+Ciclo Hamiltoniano: 0 -> 1 -> 2 -> 3 -> 4 -> 0
+TSP da reducao: 0 -> 1 -> 2 -> 3 -> 4 -> 0
+Custo otimo da reducao: 5 | n = 5 | custo igual a n: sim
+
+=== EXPERIMENTO: TEMPO E CUSTO DO TSP ===
+Matrizes completas simetricas; semente 20261020; pesos de 1 a 99.
+Mesma matriz e origem 0 para todos os algoritmos de cada tamanho.
+Forca bruta enumera (n-1)! permutacoes, sem poda.
+Tempos medios em ms com clock(), CLOCKS_PER_SEC = 1000000.
+ n | Algoritmo       | Custo | Tempo medio (ms) | Repeticoes
+ 5 | Forca bruta     |   193 |         0.000271 |     131072
+ 5 | Vizinho proximo |   196 |         0.000045 |     524288
+ 5 | Insercao proxima |   193 |         0.000095 |     262144
+ 8 | Forca bruta     |    96 |         0.075838 |        512
+ 8 | Vizinho proximo |   164 |         0.000101 |     262144
+ 8 | Insercao proxima |    96 |         0.000224 |     131072
+10 | Forca bruta     |   242 |         4.031125 |          8
+10 | Vizinho proximo |   336 |         0.000153 |     131072
+10 | Insercao proxima |   256 |         0.000357 |      65536
+12 | Forca bruta     |   230 |       444.990000 |          1
+12 | Vizinho proximo |   259 |         0.000245 |     131072
+12 | Insercao proxima |   316 |         0.000641 |      32768
+
+A forca bruta garante o otimo e tem crescimento fatorial.
+As heuristicas constroem rotas validas, mas podem ter custo maior.
+Os tempos dependem da maquina e dos pesos utilizados.
